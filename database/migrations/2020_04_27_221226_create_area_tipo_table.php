@@ -14,8 +14,8 @@ class CreateAreaTipoTable extends Migration
     public function up()
     {
         Schema::create('area_tipo', function (Blueprint $table) {
-            $table->unsignedBigInteger('area_id');
-            $table->unsignedBigInteger('tipo_id');
+            $table->unsignedBigInteger('area_id')->default();
+            $table->unsignedBigInteger('tipo_id')->default();
         });
     }
 

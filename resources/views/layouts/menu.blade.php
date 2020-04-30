@@ -24,7 +24,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-      Ticktes
+      Tickts
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -38,8 +38,9 @@
           <h6 class="collapse-header">Opciones:</h6>
           {{-- <a class="collapse-item" href={{route('tarea.create')}}>Crear Tarea</a>
           <a class="collapse-item" href={{route('tarea.index')}}>Ver Tareas</a> --}}
-          <a class="collapse-item">Crear Ticket</a>
-          <a class="collapse-item">Ver Ticketes</a>
+          <a class="collapse-item" href={{route('reporte.create')}}>Crear Ticket</a>
+          <a class="collapse-item">Ver mis Tickets</a>
+          <a class="collapse-item">Ver Tickets Asignados</a>
         </div>
       </div>
     </li>

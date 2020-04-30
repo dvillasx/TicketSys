@@ -18,8 +18,8 @@ class CreateAreaUserTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->boolean('libre')->default(0);
 
-            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

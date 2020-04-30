@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Area;
+use App\Prioridad;
 use App\Reporte;
+use App\Tipo;
 use Illuminate\Http\Request;
 
 class ReporteController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +28,10 @@ class ReporteController extends Controller
      */
     public function create()
     {
-        //
+        $areas = Area::all()->pluck('nombre_area', 'id');
+        $tipos = Tipo::all()->pluck('nombre_tipo', 'id');
+        $prioridades = Prioridad::all()->pluck('nombre_prioridad', 'id');
+        return view('tickets.ticketForm', compact('areas','tipos','prioridades'));
     }
 
     /**
@@ -35,7 +42,18 @@ class ReporteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|max:50',
+            'descripcion' => 'required|min:15',
+            'prioridad' => 'required|int|min:1|max:3',
+        ]);
+        $request->merge(['user_id' => \Auth::id()]);
+        Reporte::create($request->all());
+        return redirect()->route('reporte.index')
+            ->with([
+                'mensaje' => 'Ticket creado con exito',
+                'clase-alerta' => 'alert-success'
+            ]);
     }
 
     /**
@@ -46,7 +64,7 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        //
+        return view('ticket.ticketShow', compact('reporte'));
     }
 
     /**
@@ -57,7 +75,10 @@ class ReporteController extends Controller
      */
     public function edit(Reporte $reporte)
     {
-        //
+        $areas = Area::all()->pluck('nombre_area', 'id');
+        $tipos = Tipo::all()->pluck('nombre_tipo', 'id');
+        $prioridades = Prioridad::all()->pluck('nombre_prioridad', 'id');
+        return view('tickets.tickeShow', compact('areas','tipos','prioridades'));
     }
 
     /**
@@ -69,7 +90,15 @@ class ReporteController extends Controller
      */
     public function update(Request $request, Reporte $reporte)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|max:255',
+            'fecha_inicio' => 'required|date',
+            'fecha_termino' => 'required|date',
+            'descripcion' => 'required|min:5',
+            'prioridad' => 'required|int|min:1|max:3',
+        ]);
+        Reporte::where('id', $reporte->id)->update($request->except('_token', '_method'));
+        return redirect()->route('reporte.show', $reporte->id);
     }
 
     /**
@@ -80,6 +109,14 @@ class ReporteController extends Controller
      */
     public function destroy(Reporte $reporte)
     {
-        //
+       
+    //    if (\Gate::allows('administrador', $reporte)) {
+    //     $reporte->delete();
+    // }
+    $reporte->delete();
+    return redirect()->route('reporte.index')->with([
+        'mensaje' => 'Ticket eliminado con exito',
+        'clase-alerta' => 'alert-warning'
+    ]);
     }
 }

@@ -8,8 +8,8 @@ class Tipo extends Model
 {
     public $timestamps = false;
 
-    public function areas()
+    public function country()
     {
-        return $this->belongsToMany(Area::class);
+        return $this->belongsTo(Area::class);
     }
 }

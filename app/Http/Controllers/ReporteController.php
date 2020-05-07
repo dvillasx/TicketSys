@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class ReporteController extends Controller
 {
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +18,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        $reportes = Reporte::all();
+        return view('tickets.ticketIndex', compact('reportes'));
     }
 
     /**
@@ -31,7 +32,7 @@ class ReporteController extends Controller
         $areas = Area::all()->pluck('nombre_area', 'id');
         $tipos = Tipo::all()->pluck('nombre_tipo', 'id');
         $prioridades = Prioridad::all()->pluck('nombre_prioridad', 'id');
-        return view('tickets.ticketForm', compact('areas','tipos','prioridades'));
+        return view('tickets.ticketForm', compact('areas', 'tipos', 'prioridades'));
     }
 
     /**
@@ -43,12 +44,17 @@ class ReporteController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'titulo' => 'required|max:50',
-            'descripcion' => 'required|min:15',
-            'prioridad' => 'required|int|min:1|max:3',
+            'titulo' => 'required',
+            'descripcion' => 'required',
+            'user_asig_id' => 'required|int',
+            'tipo_id' => 'required|int',
+            'prioridad_id' => 'required|int',
         ]);
         $request->merge(['user_id' => \Auth::id()]);
         Reporte::create($request->all());
+
+        //Cambiar de libre a ocupado
+
         return redirect()->route('reporte.index')
             ->with([
                 'mensaje' => 'Ticket creado con exito',
@@ -78,7 +84,8 @@ class ReporteController extends Controller
         $areas = Area::all()->pluck('nombre_area', 'id');
         $tipos = Tipo::all()->pluck('nombre_tipo', 'id');
         $prioridades = Prioridad::all()->pluck('nombre_prioridad', 'id');
-        return view('tickets.tickeShow', compact('areas','tipos','prioridades'));
+
+        return view('tickets.tickeShow', compact('areas', 'tipos', 'prioridades'));
     }
 
     /**
@@ -92,8 +99,6 @@ class ReporteController extends Controller
     {
         $request->validate([
             'titulo' => 'required|max:255',
-            'fecha_inicio' => 'required|date',
-            'fecha_termino' => 'required|date',
             'descripcion' => 'required|min:5',
             'prioridad' => 'required|int|min:1|max:3',
         ]);
@@ -109,14 +114,14 @@ class ReporteController extends Controller
      */
     public function destroy(Reporte $reporte)
     {
-       
-    //    if (\Gate::allows('administrador', $reporte)) {
-    //     $reporte->delete();
-    // }
-    $reporte->delete();
-    return redirect()->route('reporte.index')->with([
-        'mensaje' => 'Ticket eliminado con exito',
-        'clase-alerta' => 'alert-warning'
-    ]);
+
+        //    if (\Gate::allows('administrador', $reporte)) {
+        //     $reporte->delete();
+        // }
+        $reporte->delete();
+        return redirect()->route('reporte.index')->with([
+            'mensaje' => 'Ticket eliminado con exito',
+            'clase-alerta' => 'alert-warning'
+        ]);
     }
 }

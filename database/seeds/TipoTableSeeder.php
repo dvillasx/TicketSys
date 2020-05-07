@@ -12,10 +12,10 @@ class TipoTableSeeder extends Seeder
      */
     public function run()
     {
-        Tipo::create(['nombre_tipo' => 'Informe Fiscal']);
-        Tipo::create(['nombre_tipo' => 'Internet']);
-        Tipo::create(['nombre_tipo' => 'Derrame de líquido']);
-        Tipo::create(['nombre_tipo' => 'Catálogo']);
-        Tipo::create(['nombre_tipo' => 'Quincena']);
+        Tipo::create(['nombre_tipo' => 'Informe Fiscal', 'area_id' => 1]);
+        Tipo::create(['nombre_tipo' => 'Internet', 'area_id' => 2]);
+        Tipo::create(['nombre_tipo' => 'Derrame de líquido', 'area_id' => 3]);
+        Tipo::create(['nombre_tipo' => 'Catálogo', 'area_id' => 4]);
+        Tipo::create(['nombre_tipo' => 'Quincena', 'area_id' => 5]);
     }
 }

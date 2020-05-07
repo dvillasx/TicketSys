@@ -16,6 +16,5 @@ class DatabaseSeeder extends Seeder
         $this->call(TipoTableSeeder::class);
         $this->call(PrioridadTableSeeder::class);
         $this->call(EstatusTableSeeder::class);
-        $this->call(AreaTipoTableSeeder::class);
     }
 }

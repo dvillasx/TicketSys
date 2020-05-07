@@ -14,6 +14,6 @@ class Area extends Model
     }
     public function tipos()
     {
-        return $this->belongsToMany(Tipo::class);
+        return $this->hasMany(Tipo::class);
     }
 }

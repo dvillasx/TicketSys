@@ -4,9 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Area;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AreaController extends Controller
 {
+
+    public function getTipos(Area $area)
+    {
+
+        return $area->tipos()->select('id', 'nombre_tipo')->get();
+    }
+
+    public function getAsig(Area $area)
+    {
+        return DB::table('area_user')
+            ->where('area_id', '=', $area->id)
+            ->where('libre', '=', '0')
+            ->get();
+
+        // return $area->users()->where('libre', 0)->first()->select('id', 'name')->get();
+    }
     /**
      * Display a listing of the resource.
      *

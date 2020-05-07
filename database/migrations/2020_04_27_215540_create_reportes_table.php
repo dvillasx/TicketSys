@@ -20,14 +20,15 @@ class CreateReportesTable extends Migration
             $table->unsignedBigInteger('user_asig_id');
             $table->unsignedBigInteger('area_id');
             $table->unsignedBigInteger('prioridad_id');
-            $table->unsignedBigInteger('estatus_id')->default(3);;
+            $table->unsignedBigInteger('estatus_id')->default(3);
             $table->string('titulo');
             $table->text('descripcion');
-            $table->date('fecha_inicio');
-            // $table->date('fecha_inicio')->default(DB::raw('CURRENT_TIMESTAMP'));
+            // $table->date("fecha_inicio");
+            // $table->date('fecha_inicio');
+            $table->timestamp('fecha_inicio')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('fecha_termino')->default(\DB::raw('CURRENT_TIMESTAMP'));
             // $table->timestamp('fecha_inicio')->useCurrent = true;
             // $table->date('fecha_inicio')->default(DB::raw('NOW()'));
-            $table->date('fecha_termino');
 
             $table->timestamps();
 

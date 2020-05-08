@@ -12,4 +12,8 @@ class Tipo extends Model
     {
         return $this->belongsTo(Area::class);
     }
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class);
+    }
 }

@@ -47,13 +47,24 @@ class ReporteController extends Controller
             'titulo' => 'required',
             'descripcion' => 'required',
             'user_asig_id' => 'required|int',
+            'area_id' => 'required|int',
             'tipo_id' => 'required|int',
             'prioridad_id' => 'required|int',
         ]);
-        $request->merge(['user_id' => \Auth::id()]);
-        Reporte::create($request->all());
+        $reporte = new Reporte();
+        $reporte->user_id = \Auth::id();
+        $reporte->titulo = $request->titulo;
+        $reporte->descripcion = $request->descripcion;
+        $reporte->user_asig_id = $request->user_asig_id;
+        $reporte->area_id = $request->area_id;
+        $reporte->tipo_id = $request->tipo_id;
+        $reporte->prioridad_id = $request->prioridad_id;
+        $reporte->save();
 
-        //Cambiar de libre a ocupado
+        // dd($request);
+        // $request->merge(['user_id' => \Auth::id()]);
+        // Reporte::create($request->all());
+
 
         return redirect()->route('reporte.index')
             ->with([
@@ -70,7 +81,7 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        return view('ticket.ticketShow', compact('reporte'));
+        return view('tickets.ticketShow', compact('reporte'));
     }
 
     /**
@@ -85,7 +96,7 @@ class ReporteController extends Controller
         $tipos = Tipo::all()->pluck('nombre_tipo', 'id');
         $prioridades = Prioridad::all()->pluck('nombre_prioridad', 'id');
 
-        return view('tickets.tickeShow', compact('areas', 'tipos', 'prioridades'));
+        return view('tickets.ticketForm', compact('reporte', 'areas', 'tipos', 'prioridades'));
     }
 
     /**
@@ -98,9 +109,8 @@ class ReporteController extends Controller
     public function update(Request $request, Reporte $reporte)
     {
         $request->validate([
-            'titulo' => 'required|max:255',
-            'descripcion' => 'required|min:5',
-            'prioridad' => 'required|int|min:1|max:3',
+            'descripcion' => 'required',
+            'prioridad_id' => 'required|int',
         ]);
         Reporte::where('id', $reporte->id)->update($request->except('_token', '_method'));
         return redirect()->route('reporte.show', $reporte->id);

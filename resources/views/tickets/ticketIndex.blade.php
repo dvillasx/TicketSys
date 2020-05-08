@@ -32,7 +32,7 @@
                                     </td>
                                     <td>{{$reporte->descripcion}}</td>
                                     <td>{{$reporte->fecha_inicio->format('d/m/y')}}</td>
-                                    <td>{{$reporte->estatus_id}}</td>
+                                    <td>{{$reporte->estatus->nombre_estatus}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -44,4 +44,5 @@
             </div>
         </div>
     </div>
+
     @endsection

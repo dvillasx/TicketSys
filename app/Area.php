@@ -16,4 +16,8 @@ class Area extends Model
     {
         return $this->hasMany(Tipo::class);
     }
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class);
+    }
 }

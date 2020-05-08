@@ -10,6 +10,7 @@ class Reporte extends Model
         'user_id',
         'user_asig_id',
         'area_id',
+        'tipo_id',
         'prioridad_id',
         'titulo',
         'descripcion',
@@ -21,5 +22,20 @@ class Reporte extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function estatus()
+    {
+        return $this->belongsTo(Estatus::class);
+    }
+
+    public function area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+    public function tipo()
+    {
+        return $this->belongsTo(Tipo::class);
     }
 }

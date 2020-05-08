@@ -24,7 +24,7 @@
 
   <!-- Heading -->
   <div class="sidebar-heading">
-    Tickts
+    Tickets
   </div>
 
   <!-- Nav Item - Pages Collapse Menu -->

@@ -16,23 +16,28 @@
                 @endif
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
+                        @isset($reporte)
+                        <h6 class="m-0 font-weight-bold text-primary">Editar Ticket</h6>
+                        @else
                         <h6 class="m-0 font-weight-bold text-primary">Nuevo Ticket</h6>
+                        @endisset
                     </div>
                     <div class="card-body">
+                        @isset($reporte)
+                        {!! Form::model($reporte, ['route' => ['reporte.update', $reporte->id], 'method' => 'PATCH'])!!}
+                        @else
                         {!! Form::open(['route' => 'reporte.store']) !!}
-                        {{-- @isset($tarea)
-                    {!! Form::model($tarea, ['route' => ['reporte.update', $tarea->id], 'method' => 'PATCH']) !!}
-                    @else
-                    {!! Form::open(['route' => 'reporte.store']) !!}
-
-                    @endisset --}}
+                        @endisset
 
                         <div class="form-group row">
                             {!! Form::label('titulo', 'Asunto', ['class' => 'col-md-4 col-form-label
-                            text-md-right']);
-                            !!}
+                            text-md-right']);!!}
                             <div class="col-md-6">
+                                @isset($reporte)
+                                {!! Form::text('titulo', null, ['class' => 'form-control', 'disabled']); !!}
+                                @else
                                 {!! Form::text('titulo', null, ['class' => 'form-control']); !!}
+                                @endisset
                             </div>
                         </div>
 
@@ -49,11 +54,16 @@
                             <label for="area_id" class="col-md-4 col-form-label text-md-right">{{ __('Area') }}</label>
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
+                                    @isset($reporte)
+                                    <input type="text" class="form-control" name="area_id"
+                                        value="{{$reporte->area->nombre_area ?? null}}" disabled>
+                                    @else
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="area_id">Opciones</label>
                                     </div>
                                     {!! Form::select('area_id', $areas ?? '', null, ['class' => 'custom-select']);
                                     !!}
+                                    @endisset
                                 </div>
                             </div>
                         </div>
@@ -62,11 +72,18 @@
                             <label for="tipo_id" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
+                                    @isset($reporte)
+                                    <input type="text" class="form-control" name="tipo_id"
+                                        value="{{$reporte->tipo->nombre_tipo ?? null}}" disabled>
+                                    @else
                                     <div class="input-group-prepend">
-                                        <label class="input-group-text" for="area_id">Opciones</label>
+                                        <label class="input-group-text" for="tipo_id">Opciones</label>
                                     </div>
                                     {!! Form::select('tipo_id', $tipos ?? '', null, ['class' => 'custom-select']);
                                     !!}
+                                    @endisset
+
+
                                 </div>
                             </div>
                         </div>
@@ -87,7 +104,8 @@
 
 
                         <div class="form-group row">
-                            {!! Form::label('user_asig_id_l', 'ID Asignado', ['class' => 'col-md-4 col-form-label
+                            {!! Form::label('user_asig_id_l', 'ID Personal Asignado', ['class' => 'col-md-4
+                            col-form-label
                             text-md-right']);
                             !!}
                             <div class="col-md-6">
@@ -100,9 +118,7 @@
                             <div class="col-md-6 offset-md-4">
 
                                 <button type="submit"
-                                    {{-- class="btn {{isset($tarea) && $tarea != null ? 'btn-primary' : 'btn-success'}}">
-                                    --}}
-                                    class="btn btn-success">
+                                    class="btn {{isset($reporte) && $reporte != null ? 'btn-primary' : 'btn-success'}}">
                                     {{ __('Guardar Ticket') }}
                                 </button>
 

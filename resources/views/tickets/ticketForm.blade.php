@@ -28,7 +28,6 @@
                         @else
                         {!! Form::open(['route' => 'reporte.store']) !!}
                         @endisset
-
                         <div class="form-group row">
                             {!! Form::label('titulo', 'Asunto', ['class' => 'col-md-4 col-form-label
                             text-md-right']);!!}
@@ -138,7 +137,7 @@
         <script>
             $(function() {
                     $('select[name=area_id]').change(function() {
-                        var url = '{{ url('area') }}' + '/'+ $(this).val() + '/tipo/';
+                        var url = '{{ url('api/area') }}' + '/'+ $(this).val() + '/tipo/';
 
         $.get(url, function(data) {
         var select = $('select[name= tipo_id]');
@@ -156,7 +155,7 @@
         <script>
             $(function() {
                     $('select[name=area_id]').change(function() {
-                        var url = '{{ url('area') }}' + '/'+ $(this).val() + '/asig/';
+                        var url = '{{ url('api/area') }}' + '/'+ $(this).val() + '/asig/';
 
                         $.get(url, function(data) {   
                             

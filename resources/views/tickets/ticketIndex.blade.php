@@ -23,6 +23,7 @@
                             </thead>
                             <tbody>
                                 @foreach($reportes as $reporte)
+                                @can('propietario', $reporte)
                                 <tr>
                                     <th scope="row">{{$reporte->id}}</th>
                                     <td>
@@ -34,6 +35,7 @@
                                     <td>{{$reporte->fecha_inicio->format('d/m/y')}}</td>
                                     <td>{{$reporte->estatus->nombre_estatus}}</td>
                                 </tr>
+                                @endcan
                                 @endforeach
                             </tbody>
 

@@ -71,14 +71,14 @@
                     <div class="form-group row mb-0">
                         <div class="col-md-6 offset-md-4">
                             <a href="{{route('reporte.edit',$reporte->id)}}" class="btn btn-primary btn">Editar</a>
-                            {{-- @if (\Gate::allows('administrador')) --}}
+                            @if (\Gate::allows('informatica'))
                             @can('propietario', $reporte)
                             <form action="{{route('reporte.destroy',$reporte->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn">Eliminar</button>
                             </form>
-                            {{-- @endif --}}
+                            @endif
                             @endcan
                             <a href="{{action('ReporteController@index')}}" class="btn btn-link">
                                 Listado

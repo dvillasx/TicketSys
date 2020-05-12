@@ -109,7 +109,6 @@
                             text-md-right']);
                             !!}
                             <div class="col-md-6">
-                                {{-- <input type="text" class="form-control" name="user_asig_id" disabled> --}}
                                 {!! Form::text('user_asig_id', null, ['class' => 'form-control', 'readonly']); !!}
                             </div>
                         </div>

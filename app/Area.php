@@ -20,4 +20,9 @@ class Area extends Model
     {
         return $this->hasMany(Reporte::class);
     }
+
+    public function scopeInformatica($query)
+    {
+        return $query->where('nombre_area', '=', 'Informática');
+    }
 }

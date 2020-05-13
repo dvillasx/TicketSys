@@ -27,6 +27,7 @@ class CreateReportesTable extends Migration
             $table->timestamp('fecha_inicio')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('fecha_termino')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
+            $table->softDeletes();
 
             //Mantener la intregidad de la base de datoso|ondelete borra todo lo que este relacionado al el
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

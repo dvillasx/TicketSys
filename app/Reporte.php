@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reporte extends Model
 {
@@ -16,8 +17,10 @@ class Reporte extends Model
         'descripcion',
     ];
 
+    use SoftDeletes;
 
-    protected $dates = ['fecha_inicio', 'fecha_termino', 'created_at', 'updated_at'];
+
+    protected $dates = ['fecha_inicio', 'fecha_termino', 'created_at', 'updated_at', 'deleted_at'];
 
     public function user()
     {

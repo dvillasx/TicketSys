@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Area;
+use App\Mail\MailReporte;
 use App\Prioridad;
 use App\Reporte;
 use App\Tipo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ReporteController extends Controller
 {
@@ -69,6 +71,8 @@ class ReporteController extends Controller
         // dd($request);
         // $request->merge(['user_id' => \Auth::id()]);
         // Reporte::create($request->all());
+
+        Mail::to(\Auth::user()->email)->send(new MailReporte($reporte));
 
 
         return redirect()->route('reporte.index')

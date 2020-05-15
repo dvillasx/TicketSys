@@ -29,6 +29,31 @@
 
   <!-- Nav Item - Pages Collapse Menu -->
   <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse" aria-expanded="true"
+      aria-controls="collapse">
+      <i class="fas fa-fw fa-bars"></i>
+      <span>Menu</span>
+    </a>
+    <div id="collapse" class="collapse" aria-labelledby="heading" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Opciones:</h6>
+        <a class="collapse-item" href={{route('reporte.create')}}>Crear Ticket</a>
+        <a class="collapse-item" href={{route('reporte.index')}}>Ver mis Tickets</a>
+        <a class="collapse-item">Ver Tickets Asignados</a>
+      </div>
+    </div>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Evidencias
+  </div>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
       aria-controls="collapseTwo">
       <i class="fas fa-fw fa-bars"></i>
@@ -37,9 +62,9 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Opciones:</h6>
-        <a class="collapse-item" href={{route('reporte.create')}}>Crear Ticket</a>
-        <a class="collapse-item" href={{route('reporte.index')}}>Ver mis Tickets</a>
-        <a class="collapse-item">Ver Tickets Asignados</a>
+        <a class="collapse-item" href={{route('archivo.create')}}>Subir Evidencia</a>
+        <a class="collapse-item" href={{route('archivo.index')}}>Ver mis Evidencias</a>
+        <a class="collapse-item">Ver Evidencias Asignadas</a>
       </div>
     </div>
   </li>

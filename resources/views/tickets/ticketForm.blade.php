@@ -14,7 +14,7 @@
                     </ul>
                 </div>
                 @endif
-                <div class="card shadow mb-4">
+                <div class="card shadow mb">
                     <div class="card-header py-3">
                         @isset($reporte)
                         <h6 class="m-0 font-weight-bold text-primary">Editar Ticket</h6>
@@ -81,8 +81,6 @@
                                     {!! Form::select('tipo_id', $tipos ?? '', null, ['class' => 'custom-select']);
                                     !!}
                                     @endisset
-
-
                                 </div>
                             </div>
                         </div>

@@ -17,3 +17,22 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('reporte', 'ReporteController')->middleware('auth');
+
+
+// Rutas para listado y carga de archivos
+
+Route::resource('archivo', 'ArchivoController')->middleware('auth');
+
+// Route::get('archivo', function () {
+//     $archivos = App\Archivo::all();
+//     return view('archivos.archivoIndex', compact('archivos'));
+// });
+// Route::get('archivo/formulario', function () {
+//     return view('archivos.archivoForm');
+// });
+
+Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
+
+Route::get('archivo/{archivo}/descargar', 'ArchivoController@download')->name('archivo.download');
+
+Route::post('archivo/{archivo}/borrar', 'ArchivoController@delete')->name('archivo.delete');

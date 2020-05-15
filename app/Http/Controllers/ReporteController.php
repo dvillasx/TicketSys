@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Archivo;
 use App\Area;
 use App\Mail\MailReporte;
 use App\Prioridad;
@@ -26,7 +27,8 @@ class ReporteController extends Controller
     public function index()
     {
         $reportes = Reporte::all();
-        return view('tickets.ticketIndex', compact('reportes'));
+        $archivos = Archivo::all();
+        return view('tickets.ticketIndex', compact('reportes', 'archivos'));
     }
 
     /**

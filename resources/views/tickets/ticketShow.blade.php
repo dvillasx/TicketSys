@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Descripción Ticket: {{$reporte->titulo}}
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Descripción Ticket:
+                        {{$reporte->titulo}}</h6>
                 </div>
                 <div class="card-body">
                     @csrf
@@ -52,6 +54,14 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="prioridad" class="col-md-4 col-form-label text-md-right">{{ __('Tipo') }}</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="tipo" value="{{$reporte->tipo->nombre_tipo}}"
+                                disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="categoria"
                             class="col-md-4 col-form-label text-md-right">{{ __('ID Personal Asignado') }}</label>
                         <div class="col-md-6">
@@ -59,6 +69,8 @@
                                 disabled>
                         </div>
                     </div>
+
+
 
                     <div class="form-group row">
                         <label for="estatus" class="col-md-4 col-form-label text-md-right">{{ __('Estatus') }}</label>
@@ -68,24 +80,38 @@
                         </div>
                     </div>
 
-                    <div class="form-group row mb-0">
-                        <div class="col-md-6 offset-md-4">
-                            <a href="{{route('reporte.edit',$reporte->id)}}" class="btn btn-primary btn">Editar</a>
+
+                    @can('propietario', $reporte)
+                    <div class="row  justify-content-md-center">
+                        <div class="col-sm-2"> <a href="{{route('reporte.edit',$reporte->id)}}"
+                                class="btn btn-primary btn">Editar</a>
+                        </div>
+                        <div class="col-sm-2">
                             @if (\Gate::allows('informatica'))
-                            @can('propietario', $reporte)
                             <form action="{{route('reporte.destroy',$reporte->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn">Eliminar</button>
                             </form>
                             @endif
-                            @endcan
-                            <a href="{{action('ReporteController@index')}}" class="btn btn-link">
-                                Listado
-                            </a>
                         </div>
+                        <div class="col-sm-2"><a href="{{action('ReporteController@index')}}" class="btn btn-link">
+                                Listado
+                            </a></div>
                     </div>
+                    @elsecan('asignado', $reporte)
 
+                    <div class="row  justify-content-md-center">
+                        @if ($reporte->estatus_id != 1 && $reporte->estatus_id != 4)
+                        <div class="col-sm-2"> <a href="{{route('reporte.edit',$reporte->id)}}"
+                                class="btn btn-primary btn">Actualizar</a>
+                        </div>
+                        @endif
+                        <div class="col-sm-2"><a href="{{action('ReporteController@indexa')}}" class="btn btn-link">
+                                Listado
+                            </a></div>
+                    </div>
+                    @endcan
                 </div>
             </div>
         </div>

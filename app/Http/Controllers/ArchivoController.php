@@ -23,6 +23,10 @@ class ArchivoController extends Controller
     public function upload(Request $request)
     {
         // dd($request);
+        $request->validate([
+            'reporte_id' => 'required|int',
+            'mi_archivo' => 'required',
+        ]);
         if ($request->mi_archivo->isValid()) { //Valida carga
 
             //Guarda en storage/app/archivos_cargados
@@ -34,7 +38,11 @@ class ArchivoController extends Controller
                 'nombre_hash' => $nombreHash,
                 'mime' => $request->mi_archivo->getClientMimeType(),
                 'tamaño' => $request->mi_archivo->getSize(),
-                'id_reporte' => $request->reporte_id,
+                'id_origen' => $request->reporte_id,
+                'id_user' => \Auth::id(),
+                'origen_tipo' => "Ticket",
+
+
             ]);
         }
 

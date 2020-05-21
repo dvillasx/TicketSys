@@ -46,4 +46,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Area::class);
     }
+
+    public function archivos()
+    {
+        return $this->morphToMany(Archivo::class, 'origen');
+    }
 }

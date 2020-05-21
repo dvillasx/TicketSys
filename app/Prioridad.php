@@ -8,4 +8,9 @@ class Prioridad extends Model
 {
     protected $table = "prioridades";
     public $timestamps = false;
+
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class);
+    }
 }

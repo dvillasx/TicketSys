@@ -13,4 +13,8 @@ class Estatus extends Model
     {
         return $this->hasMany(Reporte::class);
     }
+    public function getNombreEstatusAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }

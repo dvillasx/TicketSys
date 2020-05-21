@@ -10,38 +10,33 @@
                     <h6 class="m-0 font-weight-bold text-primary">Mis Evidencias</h6>
                 </div>
                 <div class="card-body">
-                    <div class="card">
-                        <div class="card-header">Archivos Cargados</div>
-                        <div class="card-body">
-                            <table class="table">
-                                <tr>
-                                    <th>ID Ticket</th>
-                                    <th>Archivo</th>
-                                    <th colspan="2">Acciones</th>
-                                </tr>
+                    <table class="table">
+                        <tr>
+                            <th>ID Ticket</th>
+                            <th>Archivo</th>
+                            <th colspan="2">Acciones</th>
+                        </tr>
 
-                                @foreach($archivos as $archivo)
-                                <tr>
-                                    <td>{{ $archivo->id_reporte }}</td>
-                                    <td>{{ $archivo->nombre_original }}</td>
-                                    <td>
-                                        <a href="{{ route('archivo.download', $archivo->id) }}"
-                                            class="btn btn-sm btn-primary">Descargar</a>
-                                    </td>
-                                    <td>
-                                        <!-- Formulario para eliminar archivo -->
-                                        {!! Form::open(['route' => ['archivo.delete', $archivo->id]]) !!}
-                                        <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
-                                        {!! Form::close() !!}
-                                    </td>
-                                </tr>
-                                @endforeach
+                        @foreach($archivos as $archivo)
+                        <tr>
+                            <td>{{ $archivo->id_origen }}</td>
+                            <td>{{ $archivo->nombre_original }}</td>
+                            <td>
+                                <a href="{{ route('archivo.download', $archivo->id) }}"
+                                    class="btn btn-sm btn-primary">Descargar</a>
+                            </td>
+                            <td>
+                                <!-- Formulario para eliminar archivo -->
+                                {!! Form::open(['route' => ['archivo.delete', $archivo->id]]) !!}
+                                <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
+                                {!! Form::close() !!}
+                            </td>
+                        </tr>
+                        @endforeach
 
-                            </table>
-                            <a href="{{action('ArchivoController@create')}}" class="btn btn-success btn">Subir
-                                Evidencia</a>
-                        </div>
-                    </div>
+                    </table>
+                    <a href="{{action('ArchivoController@create')}}" class="btn btn-success btn">Subir
+                        Evidencia</a>
                 </div>
             </div>
         </div>

@@ -18,18 +18,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('reporte', 'ReporteController')->middleware('auth');
 
-
-// Rutas para listado y carga de archivos
+Route::get('reporte.indexa', 'ReporteController@indexa')->name('reporte.indexa');
 
 Route::resource('archivo', 'ArchivoController')->middleware('auth');
 
-// Route::get('archivo', function () {
-//     $archivos = App\Archivo::all();
-//     return view('archivos.archivoIndex', compact('archivos'));
-// });
-// Route::get('archivo/formulario', function () {
-//     return view('archivos.archivoForm');
-// });
+Route::get('area/{area}/asig', 'AreaController@getAsig');
 
 Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');
 

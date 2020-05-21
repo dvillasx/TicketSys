@@ -11,8 +11,21 @@ class Archivo extends Model
         'nombre_hash',
         'mime',
         'tamaño',
-        'id_reporte',
+        'id_origen',
+        'id_user',
+        'origen_tipo',
     ];
 
     public $timestamps = false;
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function origen()
+    {
+        return $this->morphTo();
+    }
 }

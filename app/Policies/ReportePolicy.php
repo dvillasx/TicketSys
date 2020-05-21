@@ -15,6 +15,11 @@ class ReportePolicy
         return $reporte->user_id == $user->id;
     }
 
+    public function asignado(User $user, Reporte $reporte)
+    {
+        return $reporte->user_asig_id == $user->id;
+    }
+
     /**
      * Determine whether the user can view any models.
      *

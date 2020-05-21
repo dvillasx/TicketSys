@@ -20,5 +20,3 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('area/{area}/tipo', 'AreaController@getTipos');
-
-Route::get('area/{area}/asig', 'AreaController@getAsig');

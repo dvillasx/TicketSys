@@ -17,12 +17,12 @@ class AreaController extends Controller
 
     public function getAsig(Area $area)
     {
+
         return DB::table('area_user')
+            ->where('user_id', '!=', \Auth::id())
             ->where('area_id', '=', $area->id)
             ->where('libre', '=', '0')
             ->get();
-
-        // return $area->users()->where('libre', 0)->first()->select('id', 'name')->get();
     }
     /**
      * Display a listing of the resource.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Archivo;
 use App\Area;
+use App\Estatus;
 use App\Mail\MailReporte;
 use App\Prioridad;
 use App\Reporte;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ReporteController extends Controller
 {
+
 
     public function __construct()
     {
@@ -27,9 +29,10 @@ class ReporteController extends Controller
     public function index()
     {
         $reportes = Reporte::all();
-        $archivos = Archivo::all();
-        return view('tickets.ticketIndex', compact('reportes', 'archivos'));
+        return view('tickets.ticketIndex', compact('reportes'));
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -70,9 +73,6 @@ class ReporteController extends Controller
         $reporte->prioridad_id = $request->prioridad_id;
         $reporte->save();
 
-        // dd($request);
-        // $request->merge(['user_id' => \Auth::id()]);
-        // Reporte::create($request->all());
 
         Mail::to(\Auth::user()->email)->send(new MailReporte($reporte));
 
@@ -92,8 +92,12 @@ class ReporteController extends Controller
      */
     public function show(Reporte $reporte)
     {
-        return view('tickets.ticketShow', compact('reporte'));
+        // dd($reporte);
+        $estatus = Estatus::all()->pluck('nombre_estatus', 'id');
+        return view('tickets.ticketShow', compact('reporte', 'estatus'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -106,8 +110,10 @@ class ReporteController extends Controller
         $areas = Area::all()->pluck('nombre_area', 'id');
         $tipos = Tipo::all()->pluck('nombre_tipo', 'id');
         $prioridades = Prioridad::all()->pluck('nombre_prioridad', 'id');
+        $estatus = Estatus::all()->pluck('nombre_estatus', 'id');
 
-        return view('tickets.ticketForm', compact('reporte', 'areas', 'tipos', 'prioridades'));
+
+        return view('tickets.ticketForm', compact('reporte', 'areas', 'tipos', 'prioridades', 'estatus'));
     }
 
     /**
@@ -119,10 +125,7 @@ class ReporteController extends Controller
      */
     public function update(Request $request, Reporte $reporte)
     {
-        $request->validate([
-            'descripcion' => 'required',
-            'prioridad_id' => 'required|int',
-        ]);
+
         Reporte::where('id', $reporte->id)->update($request->except('_token', '_method'));
         return redirect()->route('reporte.show', $reporte->id);
     }
@@ -136,13 +139,18 @@ class ReporteController extends Controller
     public function destroy(Reporte $reporte)
     {
 
-        //    if (\Gate::allows('administrador', $reporte)) {
-        //     $reporte->delete();
-        // }
         $reporte->delete();
         return redirect()->route('reporte.index')->with([
             'mensaje' => 'Ticket eliminado con exito',
             'clase-alerta' => 'alert-warning'
         ]);
+    }
+
+
+
+    public function indexa()
+    {
+        $reportes = Reporte::all();
+        return view('tickets.ticketAsigIndex', compact('reportes'));
     }
 }

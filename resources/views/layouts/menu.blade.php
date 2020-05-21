@@ -39,7 +39,7 @@
         <h6 class="collapse-header">Opciones:</h6>
         <a class="collapse-item" href={{route('reporte.create')}}>Crear Ticket</a>
         <a class="collapse-item" href={{route('reporte.index')}}>Ver mis Tickets</a>
-        <a class="collapse-item">Ver Tickets Asignados</a>
+        <a class="collapse-item" href={{route('reporte.indexa')}}>Ver Tickets Asignados</a>
       </div>
     </div>
   </li>

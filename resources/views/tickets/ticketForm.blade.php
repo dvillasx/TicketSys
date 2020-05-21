@@ -44,8 +44,20 @@
                             <label for="descripcion"
                                 class="col-md-4 col-form-label text-md-right">{{ __('Descripción') }}</label>
                             <div class="col-md-6">
+                                @isset($reporte)
+                                @can('propietario', $reporte)
                                 {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '2']);
                                 !!}
+                                @elsecan('asignado', $reporte)
+                                <textarea type="text" class="form-control" name="descripcion"
+                                    disabled> {{$reporte->descripcion}}  </textarea>
+                                @endcan
+                                @else
+                                {!! Form::textarea('descripcion', null, ['class' => 'form-control','rows' => '2']);
+                                !!}
+                                @endisset
+
+
                             </div>
                         </div>
 
@@ -90,16 +102,36 @@
                                 class="col-md-4 col-form-label text-md-right">{{ __('Prioridad') }}</label>
                             <div class="col-md-6">
                                 <div class="input-group mb-3">
+                                    @isset($reporte)
+
+                                    @can('propietario', $reporte)
                                     <div class="input-group-prepend">
                                         <label class="input-group-text" for="prioridad_id">Opciones</label>
                                     </div>
                                     {!! Form::select('prioridad_id', $prioridades ?? '', null, ['class' =>
                                     'custom-select']); !!}
+
+                                    @elsecan('asignado', $reporte)
+                                    <input type="text" class="form-control" name="estatus"
+                                        value="{{$reporte->prioridad->nombre_prioridad}}" disabled>
+                                    @endcan
+
+                                    @else
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="prioridad_id">Opciones</label>
+                                    </div>
+                                    {!! Form::select('prioridad_id', $prioridades ?? '', null, ['class' =>
+                                    'custom-select']); !!}
+                                    @endisset
+
                                 </div>
                             </div>
                         </div>
 
+                        @isset($reporte)
 
+                        @can('propietario', $reporte)
+                        {{-- -------------------------------------------------------------------------------- --}}
                         <div class="form-group row">
                             {!! Form::label('user_asig_id_l', 'ID Personal Asignado', ['class' => 'col-md-4
                             col-form-label
@@ -109,16 +141,44 @@
                                 {!! Form::text('user_asig_id', null, ['class' => 'form-control', 'readonly']); !!}
                             </div>
                         </div>
+                        {{-- -------------------------------------------------------------------------------- --}}
+                        @elsecan('asignado', $reporte)
+                        {{-- -------------------------------------------------------------------------------- --}}
+                        <div class="form-group row">
+                            <label for="estatus_id"
+                                class="col-md-4 col-form-label text-md-right">{{ __('Estatus') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="prioridad_id">Opciones</label>
+                                    </div>
+                                    {!! Form::select('estatus_id', $estatus ?? '', null, ['class' =>
+                                    'custom-select']); !!}
+                                </div>
+                            </div>
+                        </div>
+                        {{-- -------------------------------------------------------------------------------- --}}
+                        @endcan
+                        @else
+                        {{-- -------------------------------------------------------------------------------- --}}
+                        <div class="form-group row">
+                            {!! Form::label('user_asig_id_l', 'ID Personal Asignado', ['class' => 'col-md-4
+                            col-form-label
+                            text-md-right']);
+                            !!}
+                            <div class="col-md-6">
+                                {!! Form::text('user_asig_id', null, ['class' => 'form-control', 'readonly']); !!}
+                            </div>
+                        </div>
+                        {{-- -------------------------------------------------------------------------------- --}}
+                        @endisset
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-
                                 <button type="submit"
                                     class="btn {{isset($reporte) && $reporte != null ? 'btn-primary' : 'btn-success'}}">
                                     {{ __('Guardar Ticket') }}
                                 </button>
-
-
                                 <a href="{{action('ReporteController@index')}}" class="btn btn-link">
                                     Listado
                                 </a>
@@ -153,7 +213,7 @@
         <script>
             $(function() {
                     $('select[name=area_id]').change(function() {
-                        var url = '{{ url('api/area') }}' + '/'+ $(this).val() + '/asig/';
+                        var url = '{{ url('area') }}' + '/'+ $(this).val() + '/asig/';
 
                         $.get(url, function(data) {   
                             

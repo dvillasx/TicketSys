@@ -1,59 +1,51 @@
 <p align="center"><img src="https://s3-us-west-2.amazonaws.com/lasaga-blog/media/images/udg.original.jpg" width="400"></p>
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## TicketSys
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Proyecto de la materia de Programación para Internet
+En vista de lo sucedido con la pandemia y la obligación del trabajo en _home office_,
+me vi en la situación de tener que realizar trabajos junto con mis compañeros del
+modular de forma remota, entre las pruebas, bugs, documentación, no daba abasto.
+El problema en particular era que no teníamos una manera de ver el _estatus_ de los
+**reportes** o de ver _evidencia_ de lo que íbamos reportándonos entre nosotros y
+no solo eso, sino que había veces en que no sabíamos quien estaba **disponible** para
+ayudarnos a modificar o solucionar algo y en ocasiones este problema requería una
+_prioridad_ alta. Un error común entre nosotros era el no saber describir el _tipo_ de
+problema ya que siempre le dábamos otro tipo de redacción y esto ocasionaba mal entendidos
+ya a veces era algo muy fácil, pero en el _título_ del problema entendíamos algo diferente.
 
--   [Simple, fast routing engine](https://laravel.com/docs/routing).
--   [Powerful dependency injection container](https://laravel.com/docs/container).
--   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
--   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
--   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
--   [Robust background job processing](https://laravel.com/docs/queues).
--   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Descripción del Proyecto
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Este proyecto integra todas las herramientas necesarias para erradicar los problemas que se
+me presentaron a la hora de afrontar esta pandemia desde el hogar.
 
-## Learning Laravel
+El sistema en busca de darle más que un enfoque de un proyecto escolar lo vi como una organización
+en este tenemos _previamente_ ingresadas _Áreas_, _Tipos de Problema_, _Estatus_ y _Prioridades_.
+Ya en el sistema podemos encontrar con un sistema de creación de _Reportes_ llamados aquí como
+**Tickets** estos pueden ser _agregados_, _modificados_, _mostrados_, _indexados_ y _eliminados_
+siempre y cuando se cumplan con las _credenciales_ correctas, estas son _verificadas_ por medio
+de _correo electrónico_ además que al crear un **Ticket** recibes una _confirmación_ de la creación del
+mismo. El sistema puedes _acceder_ por medio de tu correo electrónico y _salir_ ya una vez dentro del
+sistema.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Usamos toda la _potencia_ de _Laravel_ y una estructura _MVC_ para _proteger_ y _ver_ en todo momento.
+Se cuenta con una base de datos relacional y la validación del mismo.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+También presenta una apariencia amistosa e intuitiva para que la experiencia del usuario y el diseño
+sean del sistema sea algo vistoso para el usuario final.
 
-## Laravel Sponsors
+El sistema también tiene una sección especial para agregar _evidencia_ a algún reporte ya si es necesario
+mostrar de manera _grafica_ el incidente.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Damian Villaseñor
 
--   **[Vehikl](https://vehikl.com/)**
--   **[Tighten Co.](https://tighten.co)**
--   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
--   **[64 Robots](https://64robots.com)**
--   **[Cubet Techno Labs](https://cubettech.com)**
--   **[Cyber-Duck](https://cyber-duck.co.uk)**
--   **[British Software Development](https://www.britishsoftware.co)**
--   **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
--   **[DevSquad](https://devsquad.com)**
--   [UserInsights](https://userinsights.com)
--   [Fragrantica](https://www.fragrantica.com)
+Ingeniería en Computación
+Universidad de Guadalajara
 
-## Contributing
+## Instrucciones de Instalación
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   composer require laravel/ui --dev
+-   php artisan ui vue --auth
+-   composer require laravelcollective/html
+-   composer require laraveles/spanish
+-   php artisan vendor:publish --tag=lang

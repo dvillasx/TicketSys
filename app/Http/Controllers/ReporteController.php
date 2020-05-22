@@ -146,8 +146,6 @@ class ReporteController extends Controller
         ]);
     }
 
-
-
     public function indexa()
     {
         $reportes = Reporte::all();

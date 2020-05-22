@@ -22,6 +22,8 @@ Route::get('reporte.indexa', 'ReporteController@indexa')->name('reporte.indexa')
 
 Route::resource('archivo', 'ArchivoController')->middleware('auth');
 
+Route::get('archivo.indexa', 'ArchivoController@indexa')->name('archivo.indexa');
+
 Route::get('area/{area}/asig', 'AreaController@getAsig');
 
 Route::post('archivo/cargar', 'ArchivoController@upload')->name('archivo.upload');

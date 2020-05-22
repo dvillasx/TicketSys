@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Policies\ArchivoPolicy;
 use Illuminate\Database\Eloquent\Model;
 
 class Archivo extends Model
@@ -14,9 +15,14 @@ class Archivo extends Model
         'id_origen',
         'id_user',
         'origen_tipo',
+        'id_user_asig',
     ];
 
     public $timestamps = false;
+
+    protected $policies = [
+        Archivo::class => ArchivoPolicy::class,
+    ];
 
 
     public function user()

@@ -213,6 +213,7 @@
         <script>
             $(function() {
                     $('select[name=area_id]').change(function() {
+                        $('input[name="user_asig_id"]').val('');
                         var url = '{{ url('area') }}' + '/'+ $(this).val() + '/asig/';
 
                         $.get(url, function(data) {   

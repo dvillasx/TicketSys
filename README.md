@@ -38,14 +38,14 @@ El sistema también tiene una sección especial para agregar _evidencia_ a algú
 mostrar de manera _grafica_ el incidente.
 
 En el uso cotidiano, el usuario _accede_ al sistema por medio de sus _credenciales_, en caso de no tener, deberá
-_registrarse_ y _confirmar su correo_, una vez _verificado_ en el menú tendrá una _amplia información_ sobre sus **Tickets** _asignados_ y los que el asigno. En el inicio podrá ver en _tarjetas_ la cantidad de **tickets** _pendientes_ los ya _realizados_ y los que han sido _bloqueados_ y esto igualmente en el modo en el que trabajo lo que se le _asignaron_ a él, también una pequeña grafica de cuales tipos de **ticktes** son los que más se le solicitan por tu _área_.
+_registrarse_ y _confirmar su correo_, una vez _verificado_ en el menú tendrá una _amplia información_ sobre sus **Tickets** _asignados_ y los que el asigno. En el inicio podrá ver en _tarjetas_ la cantidad de **tickets** _pendientes_ los ya _realizados_ y los que han sido _bloqueados_ y esto igualmente en el modo en el que trabajo lo que se le _asignaron_ a él, también una pequeña grafica de cuales tipos de ** tickets** son los que más se le solicitan por tu _área_.
 
-Podrá _acceder_ a la _creación_ de un _nuevo_ **Ticket** en donde llenará un _formulario_ el cual le ayudará a llenar de manera _cómoda_ su reporte, al elegir un área el sistema _automáticamente_ le dará un _listado_ de los tipos de problemas que pueden resolver el área y _ajustar_ la prioridad. Una vez terminado podrá ver en una _tabla_ el listado de reportes podrá _verlos a detalle_ _modificarlos_ solo en _descripción_ e _urgencia_ y en base a algunas _políticas_ podrá _eliminarlo_.
+Se le permitirá _acceder_ a la _creación_ de un _nuevo_ **Ticket** en donde llenará un _formulario_ el cual le ayudará a llenar de manera _cómoda_ su reporte, al elegir un área el sistema _automáticamente_ le dará un _listado_ de los tipos de problemas que pueden resolver el área y _ajustar_ la prioridad. Una vez terminado verá en una _tabla_ el listado de reportes _verlos a detalle_ _modificarlos_ solo en _descripción_ e _urgencia_ y en base a algunas _políticas_ _eliminarlo_.
 
-En la sección de los asignados se le presentará una _tabla_ con todos los **ticktes** asignados en los que podrá
-acceder y ver _más detalles_ y _editar sus estatus_ para que la persona que levanto el reporte lleve un _tracking_ de como va su ticket.
+En la sección de los asignados se le presentará una _tabla_ con todos los ** tickets** asignados en los que podrá
+acceder y ver _más detalles_ y _editar sus estatus_ para que la persona que levanto el reporte lleve un _tracking_ de cómo va su ticket.
 
-En el caso de necesitar mostrar alguna _evidencia_ se podrá hacer una vez determinando el **ticket** al cual se le
+En el caso de necesitar mostrar alguna _evidencia_ se hará una vez determinando el **ticket** al cual se le
 va a _acompañar_ la evidencia. Una vez levantado podas ver en una _tabla_ tus evidencias _subidas_ y en ella algunas _acciones_ como lo son _descargar_ o _eliminar_ en el caso de tener las _credenciales correctas_. Así a su vez para los asignados puedes descargar y ver la información anexada al reporte.
 
 ## Damian Villaseñor

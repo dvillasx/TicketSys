@@ -14,11 +14,11 @@
                         <tr>
                             <th>ID Ticket</th>
                             <th>Archivo</th>
-                            <th colspan="2">Acciones</th>
+                            <th>Acciones</th>
                         </tr>
 
                         @foreach($archivos as $archivo)
-                        @can('propietario', $archivo)
+                        @can('asignado', $archivo)
                         <tr>
                             <td>{{ $archivo->id_origen }}</td>
                             <td>{{ $archivo->nombre_original }}</td>
@@ -26,19 +26,12 @@
                                 <a href="{{ route('archivo.download', $archivo->id) }}"
                                     class="btn btn-sm btn-primary">Descargar</a>
                             </td>
-                            <td>
-                                <!-- Formulario para eliminar archivo -->
-                                {!! Form::open(['route' => ['archivo.delete', $archivo->id]]) !!}
-                                <button type="submit" class="btn btn-sm btn-danger">Borrar</button>
-                                {!! Form::close() !!}
-                            </td>
                         </tr>
                         @endcan
                         @endforeach
 
                     </table>
-                    <a href="{{action('ArchivoController@create')}}" class="btn btn-success btn">Subir
-                        Evidencia</a>
+
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ class ArchivoController extends Controller
 
     public function create()
     {
-        $reportes = Reporte::all()->pluck('titulo', 'id');
+        $reportes = Reporte::all()->pluck('titulo', 'id', 'id_user_asig');
         return view('archivos.archivoForm', compact('reportes'));
     }
     public function upload(Request $request)
@@ -32,6 +32,8 @@ class ArchivoController extends Controller
             //Guarda en storage/app/archivos_cargados
             $nombreHash = $request->mi_archivo->store('archivos_cargados');
 
+            $reporte = Reporte::where('id', '=', $request->reporte_id)->first();
+
             //Crea registro en tabla archivos
             Archivo::create([
                 'nombre_original' => $request->mi_archivo->getClientOriginalName(),
@@ -41,7 +43,7 @@ class ArchivoController extends Controller
                 'id_origen' => $request->reporte_id,
                 'id_user' => \Auth::id(),
                 'origen_tipo' => "Ticket",
-
+                'id_user_asig' => $reporte->user_asig_id,
 
             ]);
         }
@@ -76,5 +78,11 @@ class ArchivoController extends Controller
             'mensaje' => 'Evidencia eliminada con exito',
             'clase-alerta' => 'alert-warning'
         ]);
+    }
+
+    public function indexa()
+    {
+        $archivos = Archivo::all();
+        return view('archivos.archivoAsigIndex', compact('archivos'));
     }
 }

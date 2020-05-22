@@ -64,7 +64,7 @@
         <h6 class="collapse-header">Opciones:</h6>
         <a class="collapse-item" href={{route('archivo.create')}}>Subir Evidencia</a>
         <a class="collapse-item" href={{route('archivo.index')}}>Ver mis Evidencias</a>
-        <a class="collapse-item">Ver Evidencias Asignadas</a>
+        <a class="collapse-item" href={{route('archivo.indexa')}}>Ver Evidencias Asignadas</a>
       </div>
     </div>
   </li>

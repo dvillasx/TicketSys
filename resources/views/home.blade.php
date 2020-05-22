@@ -166,7 +166,8 @@
         </div>
         <div class="card-body">
           @foreach ($counts as $key => $value)
-          <h4 class="small font-weight-bold">{{$key}} <span class="float-right">{{$value * 100 / $obtenidos}} %</span>
+          <h4 class="small font-weight-bold">{{$key}} <span class="float-right">{{round($value * 100 / $obtenidos, 1)}}
+              %</span>
           </h4>
           <div class="progress mb-4">
             <div class="progress-bar bg-info" role="progressbar" style="width: {{$value * 100 / $obtenidos}}%"

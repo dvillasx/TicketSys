@@ -66,11 +66,17 @@ class HomeController extends Controller
                 ->update(['libre' => '0']);
         }
 
+
         foreach ($reportes as $reporte) {
             $array[] = $reporte->tipo->nombre_tipo;
         }
 
-        $counts = array_count_values($array);
+        if (!empty($array)) {
+            $counts = array_count_values($array);
+        }
+
+
+
 
 
         // dd($counts);

@@ -60,3 +60,4 @@ Universidad de Guadalajara
 -   composer require laravelcollective/html
 -   composer require laraveles/spanish
 -   php artisan vendor:publish --tag=lang
+-   Una vez instalado se registra al sistema y verifica para poder usarlo

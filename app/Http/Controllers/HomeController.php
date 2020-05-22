@@ -75,10 +75,6 @@ class HomeController extends Controller
             $counts = array_count_values($array);
         }
 
-
-
-
-
         // dd($counts);
         return view('home', compact(
             'obtenidos',

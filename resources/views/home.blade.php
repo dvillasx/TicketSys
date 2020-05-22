@@ -165,7 +165,8 @@
           <h6 class="m-0 font-weight-bold text-primary">Tipos de Tickets Asignados</h6>
         </div>
         <div class="card-body">
-          @foreach ($counts as $key => $value)
+          @isset($counts)
+          @foreach ($counts ?? '' as $key => $value)
           <h4 class="small font-weight-bold">{{$key}} <span class="float-right">{{round($value * 100 / $obtenidos, 1)}}
               %</span>
           </h4>
@@ -174,6 +175,7 @@
               aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
           </div>
           @endforeach
+          @endisset
         </div>
       </div>
 

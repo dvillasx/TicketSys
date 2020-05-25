@@ -60,3 +60,4 @@ Universidad de Guadalajara
 -   composer require laraveles/spanish
 -   php artisan vendor:publish --tag=lang
 -   Una vez instalado se registra al sistema y verifica para poder usarlo
+-   Para el uso de correo debe configurar el .env para usar tu cuenta de mailtrap

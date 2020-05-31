@@ -61,3 +61,4 @@ Universidad de Guadalajara
 -   php artisan vendor:publish --tag=lang
 -   Una vez instalado se registra al sistema y verifica para poder usarlo
 -   Para el uso de correo debe configurar el .env para usar tu cuenta de mailtrap
+-   Para hacer **tickets** debe crear usuarios de diferentes areas para asignarselos
